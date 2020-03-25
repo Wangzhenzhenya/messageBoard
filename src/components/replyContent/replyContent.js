@@ -88,9 +88,9 @@ class ReplyContent extends Component {
         console.log('进入删除')
         deleteReply(this.props.item);
         message.success('删除成功');
-        // setTimeout(() => {
-        //         window.location.reload();
-        // }, 1000);
+        setTimeout(() => {
+                window.location.reload();
+        }, 1000);
         }
 
     cancel=(e)=> {
