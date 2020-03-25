@@ -1,2 +1,2 @@
-const nano = require('nano')('http://localhost:5984');
-nano.db.destroy('reply');
+const db = require('PouchDB')('http://localhost:5984/reply')
+db.destroy()
