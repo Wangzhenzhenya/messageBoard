@@ -1,0 +1,9 @@
+textarea{
+    width: 100%;
+}
+.msg_reply_delete{
+    color:red;
+    font-size: .7rem;
+    cursor: pointer;
+    margin-left: 20px;
+}

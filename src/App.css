@@ -1,11 +1,21 @@
 @import '~antd/dist/antd.css';
 
 .App{
-  width: 60%;
+  width: 90%;
   margin: 0 auto;
-  border: 1px solid black;
-  padding: 50px 0;
+  /* border: 1px solid gray; */
+  padding: 8px 20px;
 }
+
+.ant-spin-spinning {
+  position: static;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  opacity: 1;
+  margin-top: 30px;
+}
+
 
 .borad{
   /* width: 100%; */
@@ -32,9 +42,11 @@
 }
 
 .msg_receive{
-  border: 1px solid black;
+  border: 1px solid rgb(201, 209, 199);
+  border-radius:8px;
   padding:3px;
   margin-top: 20px;
+  background-color: #c3f1f1;
 }
 
 .msg_head{
@@ -43,9 +55,113 @@
   padding: 8px 5px;
 }
 
-.msg_head{
+.msg_item{
+  display: flex;
+  
+}
+.msg_img{
   border-radius: 50%;
-  width: 1rem;
-  height: 1rem;
-  float: left;
+  width: 8%;
+  height: 5rem;
+  margin-top:6px;
+  /* height: 4.5rem; */
+  /* float: left; */
+  display: inline-block;
+}
+
+.row_titile{
+  text-align: center;
+  justify-content: center;
+}
+
+.row_fixed{
+  /* position: fixed; */
+}
+
+.msg_info{
+  width: 92%;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.msg_name{
+    font-weight:900;
+}
+
+.msg_content{
+  font-size: 0.8rem;
+  margin-bottom: 7px;
+  margin-top: 8px;
+  text-indent: 10px;
+  color: rgb(117, 106, 109);
+}
+
+#nest-messages{
+  /* border: 1px solid gray; */
+}
+
+.msg_reply{
+  color: blue;
+  font-size: .7rem;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.msg_reply:hover{
+  color: rgb(110, 152, 236);
+}
+
+.replyTo{
+  list-style-type:none;
+  display: block;
+
+}
+
+.who{
+  color: rgb(84, 82, 82);
+}
+
+.who_name{
+  color:rgb(164, 106, 106);
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.replyTo_who{
+  color:rgb(172, 111, 111);
+  cursor: pointer;
+  margin-right: 10px
+}
+
+.time{
+  display: inline-flex;
+  justify-content: flex-start;
+}
+
+.ant-divider-horizontal{
+  margin: 0 !important;
+}
+.reply_content_delete{
+  color:red;
+  font-size: .7rem;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.msg_leave {
+    width: 21%;
+    position: fixed;
+    float: right;
+    top: 52px;
+    text-align: center;
+    height: 562px;
+    border-radius: 9px;
+    /* margin: 0; */
+    padding: 27px 27px 0 0;
+    padding-top: 43px;
+    margin-left: 10px;
+    right: 4%;
+    border: 1px solid #edebeb;
+    /* background-color: #c8ebf3; */
+    background-image: linear-gradient(#aee5ed, #96e591);
 }

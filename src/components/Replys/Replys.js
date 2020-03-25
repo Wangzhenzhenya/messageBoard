@@ -1,13 +1,32 @@
 import React,{Component} from 'react'
-import { Form, Input, InputNumber, Button } from 'antd';
+import { Form, Input, Button } from 'antd';
+import store from '../../store';
+import {
+    ADD_REPLYS
+} from '../../store/actionTypes';
+import {
+    addReply
+} from '../../store/actionCreators';
+import { message } from 'antd';
+import './replys.css';
+
 class Replys extends Component {
     
     constructor(props){
-        this.state={
-            
-        }
+        super();
+        this.state=store.getState();
+        // store.subscribe(this.storeChange); //订阅
     }
+
+     handleStoreChange=()=>{
+        this.setState(store.getState())
+    }
+  
     render(){
+        const success = () => {
+            message.success('留言成功！');
+        };
+
         const layout = {
             labelCol: {
                 span: 8
@@ -18,37 +37,55 @@ class Replys extends Component {
         };
 
         const validateMessages = {
-            required: 'This field is required!',
+            required: '必填!',
             types: {
-                email: 'Not a validate email!',
-                number: 'Not a validate number!',
-            },
-            number: {
-                range: 'Must be between ${min} and ${max}',
-            },
+                email: '邮箱非法!',
+                number: '非法数字!',
+            }
         };
 
-     
-        const onFinish = values => {
-            console.log(values);
+        const onFinish = async (values) => {
+            console.log(values.user.name);
+             const action = {
+                 type:ADD_REPLYS,
+                 reply:{
+                     name:values.user.name,
+                     email:values.user.email,
+                     content:values.user.content,
+                     _id:new Date().toISOString(),
+                 }
+             }
+             store.dispatch(await addReply(action.reply,[]))
+             if(this.state.status===true){
+               
+                values.user.name='';
+                values.user.email='';
+                values.user.content=''
+             }
+             success();
+             console.log(this.state.status)
+            
+             
         };
 
         return (
             <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
-                <Form.Item name={['user', 'name']} label="Name" rules={[{ required: true }]}>
+                <Form.Item name={['user', 'name']} label="用户名" rules={[{ required: true }]}>
                     <Input />
                 </Form.Item>
                 <Form.Item name={['user', 'email']} label="Email" rules={[{ type: 'email' }]}>
                     <Input />
                 </Form.Item>
-                <Form.Item name={['user', 'introduction']} label="Introduction">
+                <Form.Item name={['user', 'content']} label="留言内容">
                     <Input.TextArea />
                 </Form.Item>
                 <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-                    <Button type="primary" htmlType="submit">
-                        提交
+                    <Button type="primary" htmlType="submit" >
+                        留言
                     </Button>
                 </Form.Item>
+                <p className='info'> 留下你的脚印吧...... </p>
+                {/* {this.state.status===true?success():''} */}
             </Form>
         )
     }
