@@ -14,6 +14,6 @@
        > 当项目启动但无法自动创建数据库时，使用 cmd 创建数据库
        > `npm run createDB`  
   - 删除数据库   
-       >`npm run deleteDB`
+       >`npm run destoryDB`
   - gravatar
        > 可以获取开发者的头像,但没有在gravatar注册邮箱的头像将会显示默认图片
